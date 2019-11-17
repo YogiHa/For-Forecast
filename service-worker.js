@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Hagai_Harari_17-11-2019/precache-manifest.815b36c0cbb895cf890f8e8e37e38128.js"
+  "/Hagai_Harari_17-11-2019/precache-manifest.299b05c329f4ddd7f3d6896ea1a18d13.js"
 );
 
 self.addEventListener('message', (event) => {
