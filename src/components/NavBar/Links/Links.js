@@ -15,20 +15,17 @@ function Links(props) {
     const [displayName, setDisplayName] = useState("My");
 
     useEffect(() => {
-        if (userName) {
-            setDisplayName(`${userName}'s`)
-        } else { setDisplayName("My") }
+        userName ? setDisplayName(`${userName}'s`) : setDisplayName("My")
     }, [userName])
 
     const handleGeoCall = () => {
         latitude ? dispatch(getGeoForecast(`${latitude},${longitude}`)) : alert('unable to get user coordinates')
     }
 
-
     const { pathname } = props.location;
-
     return (
-        <div> {
+        <div> 
+        {
             pathname === '/' ?
             <div>
            <Link to="favorite"> <Button style={{color: "white"}}> {displayName} favorites </Button> </Link>
@@ -36,8 +33,7 @@ function Links(props) {
            </div>
             : 
            <Link to="/">  <Button> Main Page </Button> </Link>
-            
-        }
+         }
        </div>
     )
 }

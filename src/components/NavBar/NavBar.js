@@ -5,9 +5,7 @@ import DropDown from './DropDown/DropDown';
 
 import { Grid, AppBar, Toolbar, Typography } from '@material-ui/core';
 
-
 export default function NavBar() {
-
     return (
         <AppBar style={{background: '#2E3B55'}} position="sticky">
            <Toolbar>

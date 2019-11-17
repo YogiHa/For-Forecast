@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cityAutoComplete, clearAutoComplete } from '../../store/actions/apiActions';
 
-import Span from '../Span/Span'
+import Span from '../Span/Span';
 import { TextField, InputLabel, FormHelperText, Grid, Button } from '@material-ui/core';
 
 export default function SearchCity({ handleSubmit }) {
@@ -48,10 +48,7 @@ export default function SearchCity({ handleSubmit }) {
         }
     }
 
-
-
     return (
-
         <div>
          <TextField name="search-input" onChange={handleChange} />
          { !autoComplete ?
@@ -63,30 +60,25 @@ export default function SearchCity({ handleSubmit }) {
           :
            (
             <Grid container spacing={3}>
-    
-           {filteredCities.map(city =>{
-              const { name, key } = city;
-              return(
-                <Grid onClick={()=>handleSubmit({key, name})} key={name} item xs={3}>
-                  <Button  style={{background: "#DDA0DD"}} fullWidth>{name}</Button> 
-                </Grid>)
-            })
-           }
-
-           {isSpan ?  <Span span={"there is no city match "} /> :
-
-            <Grid style={{background: "#ff0000"}} item xs={10}>
-              <Button onClick={()=>dispatch(cityAutoComplete(searchField))} > Isn't what you search for ? </Button>
-            </Grid>
-
-           }
-        
-            </Grid>
+                {
+                 filteredCities.map(city =>{
+                    const { name, key } = city;
+                    return(
+                      <Grid onClick={()=>handleSubmit({key, name})} key={name} item xs={3}>
+                        <Button  style={{background: "#DDA0DD"}} fullWidth>{name}</Button> 
+                      </Grid>)
+                  })
+                 }      
+                 {
+                  isSpan ?  <Span span={"there is no city match "} /> :      
+                  <Grid style={{background: "#ff0000"}} item xs={10}>
+                    <Button onClick={()=>dispatch(cityAutoComplete(searchField))} > Isn't what you search for ? </Button>
+                  </Grid>
+                 }              
+             </Grid>
             )
          }
-         
          {isLoading && <img alt="loading" src={require('../../assets/loading.svg')} height='150' width='150' />}        
-
         </div>
     )
 }

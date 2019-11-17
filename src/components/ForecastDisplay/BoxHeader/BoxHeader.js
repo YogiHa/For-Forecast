@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import { Grid, Typography, Button } from '@material-ui/core';
 
 export default function BoxHeader({ currentForecast }) {
-    const { key, name } = currentForecast;
+    const { name } = currentForecast;
 
     const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ export default function BoxHeader({ currentForecast }) {
                 setIsFavorite(favNames.includes(name))
             }
         },
-        [favorites, key, name]);
+        [favorites, name]);
 
     const handleAddToFavorites = () => {
         uid ? dispatch(addToFB({ currentForecast, uid })) : dispatch(addToFavorites(currentForecast));

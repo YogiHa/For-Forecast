@@ -22,13 +22,8 @@ export default function FutureForecast() {
 
     const Degree = ({ minTemp, maxTemp }) => {
 
-        let minDegree = minTemp.toString();
-        let maxDegree = maxTemp.toString();
-
-        if (unit === 'metric') {
-            minDegree = imperialToMetric(minDegree).toString();
-            maxDegree = imperialToMetric(maxDegree).toString();
-        }
+        let minDegree = unit === 'metric' ? imperialToMetric(minTemp).toString() : minTemp.toString();
+        let maxDegree = unit === 'metric' ? imperialToMetric(maxTemp).toString() : maxTemp.toString();
 
         return (
             <Grid item xs={12}  >

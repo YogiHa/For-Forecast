@@ -10,43 +10,42 @@ import ToggleButton from 'react-toggle-button';
 const AuthNav = ({ dispatch, setAnchorMenu }) => (
 
     <MenuItem
-              onClick={() => {
-                dispatch(signOut());
-                setAnchorMenu(null);
-              }}
-            >
-              Sign Out
-            </MenuItem>
+      onClick={() => {
+        dispatch(signOut());
+        setAnchorMenu(null);
+      }}
+    >
+      Sign Out
+    </MenuItem>
 )
 
 const UnAuthNav = ({ dispatch, setAnchorMenu }) => (
 
     <div>
-              <MenuItem
-                onClick={() => {
-                  dispatch(registerModal());
-                  dispatch(cleanError());
-                  setAnchorMenu(null);
-                }}
-              >
-                Register
-              </MenuItem>
-              <MenuItem
-                onClick={() => {
-                  dispatch(signInModal(), cleanError() );
-                  setAnchorMenu(null);
-                }}
-              >
-                Sign In
-              </MenuItem>
-            </div>
+     <MenuItem
+       onClick={() => {
+         dispatch(registerModal());
+         dispatch(cleanError());
+         setAnchorMenu(null);
+       }}
+     >
+       Register
+     </MenuItem>
+     <MenuItem
+       onClick={() => {
+         dispatch(signInModal(), cleanError() );
+         setAnchorMenu(null);
+       }}
+     >
+       Sign In
+     </MenuItem>
+    </div>
 )
 
 
 export default function DropDownUI({ handleClick, anchorMenu, setAnchorMenu, toggleValue, handleToggle }) {
 
     const uid = useSelector(state => state.firebase.auth.uid);
-
     const dispatch = useDispatch();
 
     return (
@@ -75,8 +74,7 @@ export default function DropDownUI({ handleClick, anchorMenu, setAnchorMenu, tog
             uid ? <AuthNav dispatch={dispatch} setAnchorMenu={setAnchorMenu} /> : <UnAuthNav  dispatch={dispatch} setAnchorMenu={setAnchorMenu} />
           }
 
-
-           <Divider />
+          <Divider />
           <MenuItem> 
             <ToggleButton
              inactiveLabel={'C°'}
@@ -91,9 +89,7 @@ export default function DropDownUI({ handleClick, anchorMenu, setAnchorMenu, tog
                }
              }}
              onToggle={handleToggle} />  
-
           </MenuItem>
-        
        </Menu>
     </div>
     )
