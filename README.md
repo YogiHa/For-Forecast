@@ -1,4 +1,4 @@
-## For Forcast
+## For Forecast
 An App allow search for forcast anywhere on the world thanks to AccuWeather API services, add location to favorites, and register for keeping preferences for next use.
 
 
@@ -20,4 +20,4 @@ An App allow search for forcast anywhere on the world thanks to AccuWeather API 
 * backend - heroku
 
 
-** Build for Herolo assignment ** 
+** Built for Herolo assignment ** 
