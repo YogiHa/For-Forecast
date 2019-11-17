@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Hagai_Harari_17-11-2019/static/css/main.4a51419a.chunk.css",
-    "main.js": "/Hagai_Harari_17-11-2019/static/js/main.8acf28a6.chunk.js",
-    "main.js.map": "/Hagai_Harari_17-11-2019/static/js/main.8acf28a6.chunk.js.map",
+    "main.js": "/Hagai_Harari_17-11-2019/static/js/main.92646796.chunk.js",
+    "main.js.map": "/Hagai_Harari_17-11-2019/static/js/main.92646796.chunk.js.map",
     "runtime-main.js": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js",
     "runtime-main.js.map": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js.map",
     "static/js/2.0c42c49a.chunk.js": "/Hagai_Harari_17-11-2019/static/js/2.0c42c49a.chunk.js",
     "static/js/2.0c42c49a.chunk.js.map": "/Hagai_Harari_17-11-2019/static/js/2.0c42c49a.chunk.js.map",
     "index.html": "/Hagai_Harari_17-11-2019/index.html",
-    "precache-manifest.299b05c329f4ddd7f3d6896ea1a18d13.js": "/Hagai_Harari_17-11-2019/precache-manifest.299b05c329f4ddd7f3d6896ea1a18d13.js",
+    "precache-manifest.cd61f66792c0c2fe854266e10ae64212.js": "/Hagai_Harari_17-11-2019/precache-manifest.cd61f66792c0c2fe854266e10ae64212.js",
     "service-worker.js": "/Hagai_Harari_17-11-2019/service-worker.js",
     "static/css/main.4a51419a.chunk.css.map": "/Hagai_Harari_17-11-2019/static/css/main.4a51419a.chunk.css.map",
     "static/media/emptystar.png": "/Hagai_Harari_17-11-2019/static/media/emptystar.daf49cf1.png",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.92d3aaef.js",
     "static/js/2.0c42c49a.chunk.js",
     "static/css/main.4a51419a.chunk.css",
-    "static/js/main.8acf28a6.chunk.js"
+    "static/js/main.92646796.chunk.js"
   ]
 }
