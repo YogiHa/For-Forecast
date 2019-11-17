@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8dcf6ec323f3e18de13af3d9060c60f7",
+    "revision": "b4467e7189a0488e623abb226d532811",
     "url": "/Hagai_Harari_17-11-2019/index.html"
   },
   {
-    "revision": "398f2e9a27934835e65f",
+    "revision": "168d4be92547d7cbd9ae",
     "url": "/Hagai_Harari_17-11-2019/static/css/main.4a51419a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Hagai_Harari_17-11-2019/static/js/2.f4161b7a.chunk.js"
   },
   {
-    "revision": "398f2e9a27934835e65f",
-    "url": "/Hagai_Harari_17-11-2019/static/js/main.681e2065.chunk.js"
+    "revision": "168d4be92547d7cbd9ae",
+    "url": "/Hagai_Harari_17-11-2019/static/js/main.fb4158aa.chunk.js"
   },
   {
     "revision": "5e57b1a6337ba448f605",
