@@ -4,23 +4,28 @@ import Span from '../../Span/Span';
 
 import { useStyles, Copyright } from '../style';
 import {
-    Button,
-    Card,
-    CardContent,
-    CssBaseline,
-    TextField,
-    Link,
-    Box,
-    Typography,
-    Container
-} from "@material-ui/core";
+  Button,
+  Card,
+  CardContent,
+  CssBaseline,
+  TextField,
+  Link,
+  Box,
+  Typography,
+  Container
+} from '@material-ui/core';
 
-export default function SignInUI({ setEmail, setPassword, span, onSubmitSignIn }) {
+export default function SignInUI({
+  setEmail,
+  setPassword,
+  span,
+  onSubmitSignIn
+}) {
+  const classes = useStyles();
 
-    const classes = useStyles();
-
-    return (<div className="my-center">
-      <Card className={classes.card} style={{ background: "#2E3B55" }}>
+  return (
+    <div className="my-center">
+      <Card className={classes.card} style={{ background: '#2E3B55' }}>
         <CardContent>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -37,7 +42,7 @@ export default function SignInUI({ setEmail, setPassword, span, onSubmitSignIn }
                   id="email"
                   label="Email Address"
                   name="email"
-                  onChange={e=>setEmail(e.target.value)}
+                  onChange={e => setEmail(e.target.value)}
                   autoComplete="off"
                 />
                 <TextField
@@ -49,9 +54,10 @@ export default function SignInUI({ setEmail, setPassword, span, onSubmitSignIn }
                   label="Password"
                   type="password"
                   id="password"
-                  onChange={e=> setPassword(e.target.value)}
+                  onChange={e => setPassword(e.target.value)}
                 />
                 <Button
+                  id="signin_button"
                   type="submit"
                   fullWidth
                   variant="contained"
@@ -62,16 +68,15 @@ export default function SignInUI({ setEmail, setPassword, span, onSubmitSignIn }
                   Sign In
                 </Button>
               </form>
-              {span && (
-                        <Span content={span} />
-                    )}
+              {span && <Span content={span} />}
             </div>
-     
+
             <Box mt={8}>
               <Copyright Typography={Typography} Link={Link} />
             </Box>
           </Container>
         </CardContent>
       </Card>
-    </div>)
+    </div>
+  );
 }

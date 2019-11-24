@@ -1,83 +1,78 @@
-export const addToFavorites = city => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'ADD_FAVORITE_LOCALLY',
-            city: { ...city, created: new Date() }
-
-        })
+export const addToFavorites = params => {
+  return (dispatch, getState, { getFirestore }) => {
+    if (params.uid) {
+      const firestore = getFirestore();
+      firestore
+        .collection(params.uid)
+        .doc(params.city.name)
+        .set({
+          location: params.city,
+          created: new Date(),
+          img: null
+        });
     }
-}
+    dispatch({
+      type: 'ADD_FAVORITE_LOCALLY',
+      city: { ...params.city, created: new Date(), img: null }
+    });
+  };
+};
 
-
-
-export const removeFromFavorites = name => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'REMOVE_FAVORITE_LOCALLY',
-            name
-        })
+export const removeFromFavorites = params => {
+  return (dispatch, getState, { getFirestore }) => {
+    if (params.uid) {
+      const firestore = getFirestore();
+      firestore
+        .collection(params.uid)
+        .doc(params.name)
+        .delete();
     }
-}
+    dispatch({
+      type: 'REMOVE_FAVORITE_LOCALLY',
+      name: params.name
+    });
+  };
+};
 
-
-
-export const unitAction = unit => {
-    return (dispatch, getState) => {
-        dispatch({ type: 'UNIT', unit })
+export const unitAction = params => {
+  return (dispatch, getState, { getFirestore }) => {
+    if (params.uid) {
+      const firestore = getFirestore();
+      firestore
+        .collection('users')
+        .doc(params.uid)
+        .update({ unit: params.unit });
     }
-}
-
-
+    dispatch({ type: 'UNIT', unit: params.unit });
+  };
+};
 
 export const initialFBFavorites = cities => {
-    return (dispatch, getState) => {
-        dispatch({ type: "FB_FAVORITES", cities })
-    }
-}
+  return (dispatch, getState) => {
+    dispatch({ type: 'FB_FAVORITES', cities });
+  };
+};
 
-
-
-export const addToFB = paramas => {
-    return (dispatch, getState, { getFirestore }) => {
-        const firestore = getFirestore();
-        firestore
-            .collection(paramas.uid)
-            .doc(paramas.currentForecast.name)
-            .set({
-                location: paramas.currentForecast,
-                created: new Date()
-            });
-
-        dispatch(addToFavorites(paramas.currentForecast));
-
-    }
-}
-
-export const removeFromFB = paramas => {
-    const { uid, name } = paramas;
-    return (dispatch, getState, { getFirestore }) => {
-        const firestore = getFirestore();
-        firestore.collection(uid)
-            .doc(name).delete()
-
-
-        dispatch(removeFromFavorites(name));
-
-    }
-}
-
-
-
-
-export const setFBUnit = paramas => {
-    return (dispatch, getState, { getFirestore }) => {
-        const firestore = getFirestore();
-        firestore
-            .collection("users")
-            .doc(paramas.uid)
-            .update({ unit: paramas.unit });
-
-        dispatch(unitAction(paramas.unit));
-
-    }
-}
+export const addFavoriteImg = params => {
+  const { name, uid } = params;
+  return (dispatch, getState, { getFirestore }) => {
+    fetch('http://localhost:3001/getimg', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name })
+    })
+      .then(response => response.json())
+      .then(response => {
+        if (uid) {
+          const firestore = getFirestore();
+          firestore
+            .collection(uid)
+            .doc(name)
+            .update({ img: response });
+        }
+        dispatch({ type: 'FAVORITE_IMG', name, img: response });
+      });
+  };
+};

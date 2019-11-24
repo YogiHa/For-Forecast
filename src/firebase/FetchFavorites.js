@@ -1,39 +1,39 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { unitAction, initialFBFavorites } from '../store/actions/favoritesActions';
+import {
+  unitAction,
+  initialFBFavorites
+} from '../store/actions/favoritesActions';
 import firebase from './config';
 
 export default function FetchFavorites({ uid }) {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    let FBFavorites = firebase
+      .firestore()
+      .collection(uid)
+      .onSnapshot(sanpshot => {
+        const cities = sanpshot.docs.map(doc => ({
+          ...doc.data().location,
+          created: doc.data().created,
+          img: doc.data().img
+        }));
+        dispatch(initialFBFavorites(cities));
+      });
 
-    useEffect(() => {
-        let unsubscribe = firebase
-            .firestore()
-            .collection('users')
-            .doc(uid)
-            .onSnapshot(sanpshot => {
-                dispatch(unitAction(sanpshot.data().unit))
-            });
-        return () => unsubscribe();
+    let FBUnit = firebase
+      .firestore()
+      .collection('users')
+      .doc(uid)
+      .onSnapshot(sanpshot => {
+        dispatch(unitAction({ uid, unit: sanpshot.data().unit }));
+      });
+    return () => {
+      FBFavorites();
+      FBUnit();
+    };
+  }, []);
 
-    }, []);
-
-    useEffect(() => {
-        let unsubscribe = firebase
-            .firestore()
-            .collection(uid)
-            .onSnapshot(sanpshot => {
-                const cities = sanpshot.docs.map(doc => ({
-                    ...doc.data().location,
-                    created: doc.data().created
-                }));
-                dispatch(initialFBFavorites(cities))
-            });
-        return () => unsubscribe();
-
-    }, []);
-
-
-    return null;
+  return null;
 }

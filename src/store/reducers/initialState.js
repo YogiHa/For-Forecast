@@ -1,14 +1,17 @@
 export default {
-    modal: null,
-    authError: null,
-    api: {
-        autoComplete: null,
-        currentForecast: { imperial: 0, metric: 0, text: null },
-        daysForecast: null
+  modal: null,
+  authError: null,
+  api: {
+    autoComplete: null,
+    currentForecast: {
+      city: null,
+      key: null,
+      forecast: { imperial: 0, metric: 0, text: null }
     },
-    favorites: {
-        cities: [],
-        unit: 'metric'
-    }
-
-}
+    daysForecast: null
+  },
+  favorites: {
+    cities: [],
+    unit: 'metric'
+  }
+};

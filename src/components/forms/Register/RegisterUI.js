@@ -1,28 +1,34 @@
 import React from 'react';
 
-import Span from '../../Span/Span'
+import Span from '../../Span/Span';
 
 import { useStyles, Copyright } from '../style';
 import {
-    Container,
-    Button,
-    Card,
-    CardContent,
-    CssBaseline,
-    TextField,
-    Typography,
-    Box,
-    Grid,
-    Link
-} from "@material-ui/core";
+  Container,
+  Button,
+  Card,
+  CardContent,
+  CssBaseline,
+  TextField,
+  Typography,
+  Box,
+  Grid,
+  Link
+} from '@material-ui/core';
 
-export default function RegisterUI({ setFirstName, setLastName, setEmail, setPassword, span, onSubmitRegister }) {
+export default function RegisterUI({
+  setFirstName,
+  setLastName,
+  setEmail,
+  setPassword,
+  span,
+  onSubmitRegister
+}) {
+  const classes = useStyles();
 
-    const classes = useStyles();
-
-    return (
-        <div className="my-center">
-      <Card className={classes.card} style={{ background: "#2E3B55" }}>
+  return (
+    <div className="my-center">
+      <Card className={classes.card} style={{ background: '#2E3B55' }}>
         <CardContent>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -34,7 +40,7 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                  autoComplete="off"
+                      autoComplete="off"
                       name="firstName"
                       variant="outlined"
                       required
@@ -42,7 +48,7 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                       id="firstName"
                       label="First Name"
                       autoFocus
-                      onChange={e=>setFirstName(e.target.value)}
+                      onChange={e => setFirstName(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -53,7 +59,7 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                       label="Last Name"
                       name="lastName"
                       autoComplete="off"
-                      onChange={e=>setLastName(e.target.value)}
+                      onChange={e => setLastName(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -65,7 +71,7 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                       label="Email Address"
                       name="email"
                       autoComplete="off"
-                      onChange={e=>setEmail(e.target.value)}
+                      onChange={e => setEmail(e.target.value)}
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -77,11 +83,12 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                       label="Password"
                       type="password"
                       id="password"
-                      onChange={e=>setPassword(e.target.value)}
+                      onChange={e => setPassword(e.target.value)}
                     />
                   </Grid>
                 </Grid>
                 <Button
+                  id="register_button"
                   type="submit"
                   fullWidth
                   variant="contained"
@@ -91,17 +98,16 @@ export default function RegisterUI({ setFirstName, setLastName, setEmail, setPas
                 >
                   Register
                 </Button>
-                   {span && (
-                        <Span content={span} />
-                    )}
+                {span && <Span content={span} />}
               </form>
             </div>
-    
+
             <Box mt={5}>
-              <Copyright Typography={Typography} Link={Link}/>
+              <Copyright Typography={Typography} Link={Link} />
             </Box>
           </Container>
         </CardContent>
       </Card>
-    </div>)
+    </div>
+  );
 }
