@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Hagai_Harari_17-11-2019/static/css/main.4a51419a.chunk.css",
-    "main.js": "/Hagai_Harari_17-11-2019/static/js/main.fb4158aa.chunk.js",
-    "main.js.map": "/Hagai_Harari_17-11-2019/static/js/main.fb4158aa.chunk.js.map",
+    "main.css": "/Hagai_Harari_17-11-2019/static/css/main.eb3e0b4b.chunk.css",
+    "main.js": "/Hagai_Harari_17-11-2019/static/js/main.d858a0fa.chunk.js",
+    "main.js.map": "/Hagai_Harari_17-11-2019/static/js/main.d858a0fa.chunk.js.map",
     "runtime-main.js": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js",
     "runtime-main.js.map": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js.map",
-    "static/js/2.f4161b7a.chunk.js": "/Hagai_Harari_17-11-2019/static/js/2.f4161b7a.chunk.js",
-    "static/js/2.f4161b7a.chunk.js.map": "/Hagai_Harari_17-11-2019/static/js/2.f4161b7a.chunk.js.map",
+    "static/js/2.d43cdab8.chunk.js": "/Hagai_Harari_17-11-2019/static/js/2.d43cdab8.chunk.js",
+    "static/js/2.d43cdab8.chunk.js.map": "/Hagai_Harari_17-11-2019/static/js/2.d43cdab8.chunk.js.map",
     "index.html": "/Hagai_Harari_17-11-2019/index.html",
-    "precache-manifest.88dfc2d2088839cc85e609ec1786aefd.js": "/Hagai_Harari_17-11-2019/precache-manifest.88dfc2d2088839cc85e609ec1786aefd.js",
+    "precache-manifest.3ecbe9fbe889538b81ef635bd7707747.js": "/Hagai_Harari_17-11-2019/precache-manifest.3ecbe9fbe889538b81ef635bd7707747.js",
     "service-worker.js": "/Hagai_Harari_17-11-2019/service-worker.js",
-    "static/css/main.4a51419a.chunk.css.map": "/Hagai_Harari_17-11-2019/static/css/main.4a51419a.chunk.css.map",
+    "static/css/main.eb3e0b4b.chunk.css.map": "/Hagai_Harari_17-11-2019/static/css/main.eb3e0b4b.chunk.css.map",
     "static/media/emptystar.png": "/Hagai_Harari_17-11-2019/static/media/emptystar.daf49cf1.png",
     "static/media/flower.png": "/Hagai_Harari_17-11-2019/static/media/flower.fa9ff991.png",
     "static/media/loading.svg": "/Hagai_Harari_17-11-2019/static/media/loading.e7aa2d00.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.92d3aaef.js",
-    "static/js/2.f4161b7a.chunk.js",
-    "static/css/main.4a51419a.chunk.css",
-    "static/js/main.fb4158aa.chunk.js"
+    "static/js/2.d43cdab8.chunk.js",
+    "static/css/main.eb3e0b4b.chunk.css",
+    "static/js/main.d858a0fa.chunk.js"
   ]
 }
