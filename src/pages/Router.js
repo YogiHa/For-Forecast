@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import MainPage from './MainPage/MainPage';
 import FavoritePage from './FavoritePage/FavoritePage';
@@ -19,38 +19,28 @@ import Particles from 'react-particles-js';
 import particlesOptions from '../assets/particlesOptions';
 
 export default function Router() {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const uid = useSelector(state => state.firebase.auth.uid);
+  const modal = useSelector(state => state.modal);
+  return (
+    <HashRouter>
+      <Particles className="particles" param={particlesOptions} />
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/favorite" component={FavoritePage} />
+      </Switch>
 
-    const uid = useSelector(state => state.firebase.auth.uid)
-    const modal = useSelector(state => state.modal)
-    return (
+      {modal && (
+        <Modal dispatch={dispatch}>
+          {modal === 'register' && <Register />}
+          {modal === 'signIn' && <SignIn />}
+          {modal === 'apiError' && <APIError />}
+        </Modal>
+      )}
 
-        <BrowserRouter>
-        <Particles className="particles" param={particlesOptions} />
-
-          <NavBar />
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-              <Route exact path="/favorite" component={FavoritePage}/>
-            </Switch>
-
-            { modal && 
-
-              <Modal dispatch={dispatch}>
-
-              { modal === 'register' && <Register />  }
-              { modal === 'signIn' && <SignIn />  }
-              { modal === 'apiError' && <APIError />}
-
-              </Modal>
-            
-            }
-
-            { uid &&
-              <FetchFavorites uid={uid} />
-            }
-
-        </BrowserRouter>
-    )
+      {uid && <FetchFavorites uid={uid} />}
+    </HashRouter>
+  );
 }

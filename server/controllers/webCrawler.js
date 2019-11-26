@@ -4,27 +4,24 @@ const handleScrap = (req, res) => {
   (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    try {
-      const addaptReq = req.body.name.replace(' ', '%20');
-      const url = `https://www.pexels.com/search/${addaptReq}/`;
+    await page.goto(
+      `https://www.pexels.com/search/${req.body.name.replace(' ', '%20')}/`
+    );
 
-      await page.goto(url);
-      const img = await page.evaluate(() =>
-        document
+    const img = await page.evaluate(() => {
+      try {
+        return document
           .querySelector('a.js-photo-link img')
-          .getAttribute('data-tiny-src')
-      );
-      res.json(img);
-      await browser.close();
-    } catch {
-      const img = await page.evaluate(() =>
-        document
+          .getAttribute('data-tiny-src');
+      } catch {
+        let url = document
           .querySelector('a.sponsored-photos__photo__link')
-          .getAttribute('style')
-      );
-      res.json(img.slice(22, img.length - 1));
-      await browser.close();
-    }
+          .getAttribute('style');
+        return url.slice(22, url.length - 1);
+      }
+    });
+    res.json(img);
+    await browser.close();
   })();
 };
 
