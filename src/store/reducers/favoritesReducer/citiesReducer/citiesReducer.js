@@ -6,37 +6,35 @@ export const citiesReducer = (
 ) => {
   let newState;
   switch (action.type) {
-    case 'ADD_FAVORITE_LOCALLY':
+    case 'FAVORITE_CITIES_SESSION':
       return [...state, { ...action.city }];
 
-    case 'REMOVE_FAVORITE_LOCALLY':
-      newState = state.slice();
+    case 'FAVORITE_CITIES_SESSION_REMOVE':
+      newState = [...state];
       for (let i = 0; i < newState.length; i++) {
         if (newState[i].name === action.name) newState.splice(i, 1);
       }
       return newState;
 
-    case 'FAVORITES_API_CALL':
-      newState = state.slice();
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].name === action.data.name)
-          newState[i].forecast = action.data.forecast;
-      }
+    case 'FAVORITES_CITIES_API_CALL':
+      newState = [...state];
+      newState.filter(city => {
+        city.name === action.payload.name &&
+          (city.forecast = action.payload.forecast);
+      });
       return newState;
 
-    case 'FB_FAVORITES':
+    case 'FAVORITES_CITIES_FB_INITIALS':
       return [...action.cities];
 
-    case 'SIGNOUT_SUCCESS':
+    case 'FAVORITES_SIGNOUT_SUCCESS':
       return [];
 
-    case 'FAVORITE_IMG':
-      newState = state.slice();
-      for (let i = 0; i < newState.length; i++) {
-        if (newState[i].name === action.name) {
-          newState[i].img = action.img;
-        }
-      }
+    case 'FAVORITES_CITIES_IMG':
+      newState = [...state];
+      newState.filter(city => {
+        city.name === action.name && (city.img = action.img);
+      });
       return newState;
 
     default:

@@ -12,7 +12,7 @@ export const addToFavorites = params => {
         });
     }
     dispatch({
-      type: 'ADD_FAVORITE_LOCALLY',
+      type: 'FAVORITE_CITIES_SESSION',
       city: { ...params.city, created: new Date(), img: null }
     });
   };
@@ -28,7 +28,7 @@ export const removeFromFavorites = params => {
         .delete();
     }
     dispatch({
-      type: 'REMOVE_FAVORITE_LOCALLY',
+      type: 'FAVORITE_CITIES_SESSION_REMOVE',
       name: params.name
     });
   };
@@ -43,13 +43,13 @@ export const unitAction = params => {
         .doc(params.uid)
         .update({ unit: params.unit });
     }
-    dispatch({ type: 'UNIT', unit: params.unit });
+    dispatch({ type: 'FAVORITES_UNIT_SESSION', unit: params.unit });
   };
 };
 
 export const initialFBFavorites = cities => {
   return (dispatch, getState) => {
-    dispatch({ type: 'FB_FAVORITES', cities });
+    dispatch({ type: 'FAVORITES_CITIES_FB_INITIALS', cities });
   };
 };
 
@@ -72,7 +72,7 @@ export const addFavoriteImg = params => {
             .doc(name)
             .update({ img: response });
         }
-        dispatch({ type: 'FAVORITE_IMG', name, img: response });
+        dispatch({ type: 'FAVORITES_CITIES_IMG', name, img: response });
       });
   };
 };

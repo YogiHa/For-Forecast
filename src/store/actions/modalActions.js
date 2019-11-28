@@ -1,23 +1,23 @@
 export const registerModal = () => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'REGISTER_MODAL'
-        })
-    }
-}
+  return (dispatch, getState) => {
+    dispatch({
+      type: 'MODAL_REGISTER'
+    });
+  };
+};
 
 export const signInModal = () => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'SIGNIN_MODAL'
-        })
-    }
-}
+  return (dispatch, getState) => {
+    dispatch({
+      type: 'MODAL_SIGNIN'
+    });
+  };
+};
 
 export const clearModal = () => {
-    return (dispatch, getState) => {
-        dispatch({
-            type: 'CLEAR_MODAL'
-        })
-    }
-}
+  return (dispatch, getState) => {
+    dispatch({
+      type: 'MODAL_CLEAR'
+    });
+  };
+};
