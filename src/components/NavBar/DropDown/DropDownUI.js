@@ -7,6 +7,7 @@ import {
 } from '../../../store/actions/modalActions';
 import { signOut, cleanError } from '../../../store/actions/authActions';
 
+import Links from '../Links/Links';
 import { Button, Menu, MenuItem, Divider } from '@material-ui/core';
 import ToggleButton from 'react-toggle-button';
 
@@ -54,6 +55,7 @@ export default function DropDownUI({
   handleToggle
 }) {
   const uid = useSelector(state => state.firebase.auth.uid);
+  const screen = useSelector(state => state.screen);
   const dispatch = useDispatch();
 
   return (
@@ -79,6 +81,9 @@ export default function DropDownUI({
         open={Boolean(anchorMenu)}
         onClose={handleClick}
       >
+        {screen === 'mobile' && (
+          <Links setAnchorMenu={setAnchorMenu} CustomTag={MenuItem} />
+        )}
         {uid ? (
           <AuthNav dispatch={dispatch} setAnchorMenu={setAnchorMenu} />
         ) : (

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { setMobileScreen, setPCScreen } from '../store/actions/screenActions';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import MainPage from './MainPage/MainPage';
@@ -19,6 +20,17 @@ import Particles from 'react-particles-js';
 import particlesOptions from '../assets/particlesOptions';
 
 export default function Router() {
+  useEffect(() => {
+    const handleResize = () => {
+      window.innerWidth < 1075
+        ? dispatch(setMobileScreen())
+        : dispatch(setPCScreen());
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  });
+
   const dispatch = useDispatch();
 
   const uid = useSelector(state => state.firebase.auth.uid);
@@ -28,8 +40,8 @@ export default function Router() {
       <Particles className="particles" param={particlesOptions} />
       <NavBar />
       <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/favorite" component={FavoritePage} />
+        <Route exact path={`/`} component={MainPage} />
+        <Route exact path={`/favorite`} component={FavoritePage} />
       </Switch>
 
       {modal && (

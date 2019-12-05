@@ -17,6 +17,7 @@ export default function BoxHeader({ currentForecast }) {
 
   const uid = useSelector(state => state.firebase.auth.uid);
   const favorites = useSelector(state => state.favorites.cities);
+  const screen = useSelector(state => state.screen);
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -66,7 +67,9 @@ export default function BoxHeader({ currentForecast }) {
           )}
         </Grid>
         <Grid item xs={8}>
-          <Typography variant="h3">{name}</Typography>
+          <Typography variant={screen === 'mobile' ? 'h6' : 'h3'}>
+            {name}
+          </Typography>
         </Grid>
       </Grid>
       <Grid item xs={4}>

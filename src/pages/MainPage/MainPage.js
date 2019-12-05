@@ -21,6 +21,7 @@ function MainPage(props) {
 
   useEffect(() => {
     dispatch(clearForecast());
+    setIsLoading(true);
     const { state } = props.location;
     state && state.currentCity
       ? dispatch(handleFavorite(state.currentCity))

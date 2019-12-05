@@ -21,9 +21,13 @@ export default function CurrentForecast({ currentForecast }) {
           </Typography>
         </Grid>
       </Grid>
-      <br />
-      <br />
-      <Grid id="current_temp" className="my-center" item xs={12}>
+      <Grid
+        style={{ marginTop: '5%', marginBottom: '5%' }}
+        id="current_temp"
+        className="my-center"
+        item
+        xs={12}
+      >
         <Typography variant="h1">
           {currentForecast.forecast[unit] + '°'}
         </Typography>

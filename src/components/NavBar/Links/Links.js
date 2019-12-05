@@ -3,8 +3,7 @@ import { usePosition } from 'use-position';
 import { useSelector, useDispatch } from 'react-redux';
 import { getGeoForecast } from '../../../store/actions/apiActions';
 import { withRouter, Link } from 'react-router-dom';
-
-import Button from '@material-ui/core/Button';
+import { Button, Divider } from '@material-ui/core';
 
 function Links(props) {
   const { latitude, longitude } = usePosition();
@@ -23,33 +22,51 @@ function Links(props) {
       : alert('unable to get user coordinates');
   };
 
-  const { pathname } = props.location;
+  const { location, CustomTag, setAnchorMenu } = props;
   return (
     <div>
-      {pathname === '/' ? (
+      {location.pathname === `/` ? (
         <div>
-          <Link to="favorite">
+          <Link to={`/favorite`} style={{ textDecoration: 'none' }}>
             {' '}
-            <Button id="fav_nav" style={{ color: 'white' }}>
+            <CustomTag
+              onClick={() => setAnchorMenu(null)}
+              id="fav_nav"
+              style={{
+                color: `${CustomTag === Button ? 'white' : 'black'}`
+              }}
+            >
               {' '}
               {displayName} favorites{' '}
-            </Button>{' '}
+            </CustomTag>{' '}
           </Link>
-          <Button
+          <CustomTag
+            onClick={() => setAnchorMenu(null)}
             id="geo_nav"
             onClick={handleGeoCall}
-            style={{ color: 'white' }}
+            style={{
+              color: `${CustomTag === Button ? 'white' : 'black'}`
+            }}
           >
             {' '}
             {displayName} Geo Location Forecast{' '}
-          </Button>
+          </CustomTag>
         </div>
       ) : (
-        <Link to="/">
+        <Link to={`/`} style={{ textDecoration: 'none' }}>
           {' '}
-          <Button> Main Page </Button>{' '}
+          <CustomTag
+            onClick={() => setAnchorMenu(null)}
+            style={{
+              color: `${CustomTag === Button ? 'white' : 'black'}`
+            }}
+          >
+            {' '}
+            Main Page{' '}
+          </CustomTag>{' '}
         </Link>
       )}
+      {CustomTag !== Button && <Divider />}
     </div>
   );
 }

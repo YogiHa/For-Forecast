@@ -1,4 +1,5 @@
 export default {
+  screen: 'pc',
   modal: null,
   authError: null,
   api: {

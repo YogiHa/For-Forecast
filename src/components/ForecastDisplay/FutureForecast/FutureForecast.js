@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 import { Grid, Typography, Box } from '@material-ui/core';
 
 export default function FutureForecast() {
+  const screen = useSelector(state => state.screen);
   const unit = useSelector(state => state.favorites.unit);
   const daysForecast = useSelector(state => state.api.daysForecast);
 
@@ -31,7 +32,10 @@ export default function FutureForecast() {
 
     return (
       <Grid id="future_temp" item xs={12}>
-        <Typography variant="h4" style={{ align: 'center', flexGrow: 1 }}>
+        <Typography
+          variant={screen === 'mobile' ? 'h6' : 'h4'}
+          style={{ align: 'center', flexGrow: 1 }}
+        >
           {minDegree}°-{maxDegree}°
         </Typography>
       </Grid>
@@ -43,6 +47,10 @@ export default function FutureForecast() {
       {days.length > 0 && (
         <Grid
           item
+          style={{
+            marginLeft: `${screen === 'pc' ? '3%' : '1%'}`,
+            marginTop: '1%'
+          }}
           xs={12}
           container
           direction="row"
@@ -53,10 +61,10 @@ export default function FutureForecast() {
             <Grid
               key={i}
               item
-              xs={2}
+              xs={screen === 'mobile' ? 1 : 2}
               container
               direction="row"
-              spacing={2}
+              spacing={screen === 'mobile' ? 1 : 2}
               justify="space-between"
             >
               <Box style={{ background: colors[i] }}>

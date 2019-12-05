@@ -1,0 +1,37 @@
+ul.options {
+  position: relative;
+  display: block;
+  list-style: none;
+  width: 30rem;
+  transition: width 0.3s;
+  margin: auto;
+}
+
+ul.options li {
+  display: block;
+  background: #ffffff;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 1.2rem;
+  width: 100%;
+  border-radius: 2px;
+}
+ul.options li:hover {
+  font-weight: bold;
+  color: #00b4cc;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+ul.options li.active-option {
+  background: #c3c0c0;
+  font-size: 1.5rem;
+  color: #00b4cc;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.transform {
+  transform: rotate(180deg);
+}

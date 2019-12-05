@@ -7,13 +7,8 @@ import {
 } from '../../store/actions/apiActions';
 
 import Span from '../Span/Span';
-import {
-  TextField,
-  InputLabel,
-  FormHelperText,
-  Grid,
-  Button
-} from '@material-ui/core';
+import { TextField, InputLabel, FormHelperText, Grid } from '@material-ui/core';
+import './SearchCity.css';
 
 export default function SearchCity({ handleSubmit }) {
   const autoComplete = useSelector(state => state.api.autoComplete);
@@ -24,6 +19,8 @@ export default function SearchCity({ handleSubmit }) {
   const [searchField, setSearchField] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [filteredCities, setFilteredCities] = useState([]);
+  const [showOptions, setShowOptions] = useState(false);
+  const [activeOption, setActiveOption] = useState(0);
   const [isSpan, setIsSpan] = useState(false);
 
   useEffect(() => {
@@ -32,6 +29,7 @@ export default function SearchCity({ handleSubmit }) {
       if (isLoading) {
         setIsLoading(false);
         setFilteredCities(autoComplete);
+        setShowOptions(true);
       } else {
         setFilteredCities(
           autoComplete.filter(city =>
@@ -41,6 +39,7 @@ export default function SearchCity({ handleSubmit }) {
       }
     } else {
       setFilteredCities([]);
+      setShowOptions(false);
     }
   }, [isLoading, searchField, autoComplete]);
 
@@ -49,7 +48,7 @@ export default function SearchCity({ handleSubmit }) {
   }, [modal]);
 
   const handleChange = e => {
-    const { value } = e.target;
+    let { value } = e.target;
     setSearchField(value);
     if (value.length > 2 && !autoComplete) {
       setIsLoading(true);
@@ -60,9 +59,28 @@ export default function SearchCity({ handleSubmit }) {
     }
   };
 
+  const handleKeyDown = e => {
+    if (e.keyCode === 13) {
+      setActiveOption(0);
+      let { key, name } = filteredCities[activeOption];
+      handleSubmit({ key, name });
+    } else if (e.keyCode === 38) {
+      if (activeOption === 0) {
+        return;
+      }
+      setActiveOption(activeOption - 1);
+    } else if (e.keyCode === 40) {
+      if (activeOption === filteredCities.length - 1) {
+        return;
+      }
+      setActiveOption(activeOption + 1);
+    } else if (e.keyCode === 27) {
+      setShowOptions(false);
+    }
+  };
   return (
     <div>
-      <form>
+      <div className="my-center">
         <TextField
           autoComplete="off"
           autoFocus
@@ -71,49 +89,57 @@ export default function SearchCity({ handleSubmit }) {
           id="search_input"
           name="search-input"
           onChange={handleChange}
+          onKeyDown={e => handleKeyDown(e)}
         />
-      </form>
+        {isLoading ? (
+          <img
+            alt="loading"
+            src={require('../../assets/loading.svg')}
+            height="75"
+            width="75"
+          />
+        ) : (
+          <img
+            alt="arrow"
+            onClick={() => autoComplete && setShowOptions(!showOptions)}
+            src={require('../../assets/arrow.jpg')}
+            height="75"
+            width="75"
+            className={`${autoComplete && 'pointer'} ${showOptions &&
+              'transform'}`}
+          />
+        )}
+      </div>
+
       {!autoComplete ? (
         <InputLabel>
           <FormHelperText> type 3 letters for auto-complete </FormHelperText>
         </InputLabel>
       ) : (
-        <Grid container spacing={3}>
-          {filteredCities.map(city => {
-            const { name, key } = city;
-            return (
-              <Grid
-                id="filtered"
-                onClick={() => handleSubmit({ key, name })}
-                key={name}
-                item
-                xs={3}
-              >
-                <Button style={{ background: '#DDA0DD' }} fullWidth>
+        showOptions && (
+          <ul className="options">
+            {filteredCities.map((city, index) => {
+              const { name, key } = city;
+              return (
+                <li
+                  className={index === activeOption && 'active-option'}
+                  id="filtered"
+                  onClick={() => handleSubmit({ key, name })}
+                  key={index}
+                >
                   {name}
-                </Button>
-              </Grid>
-            );
-          })}
-          {isSpan ? (
-            <Span span={'there is no city match '} />
-          ) : (
-            <Grid style={{ background: '#ff0000' }} item xs={10}>
-              <Button onClick={() => dispatch(cityAutoComplete(searchField))}>
-                {' '}
-                Isn't what you search for ?{' '}
-              </Button>
-            </Grid>
-          )}
-        </Grid>
-      )}
-      {isLoading && (
-        <img
-          alt="loading"
-          src={require('../../assets/loading.svg')}
-          height="150"
-          width="150"
-        />
+                </li>
+              );
+            })}
+            {autoComplete.length > filteredCities.length && (
+              <li
+                style={{ background: '#F08080' }}
+                onClick={() => dispatch(cityAutoComplete(searchField))}
+              >{`isn't what you search for?`}</li>
+            )}
+            {isSpan && <li>{'there is no city match to your input search'}</li>}
+          </ul>
+        )
       )}
     </div>
   );
