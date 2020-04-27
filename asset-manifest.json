@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/Hagai_Harari_17-11-2019/static/css/main.166a9d90.chunk.css",
-    "main.js": "/Hagai_Harari_17-11-2019/static/js/main.823491c8.chunk.js",
-    "main.js.map": "/Hagai_Harari_17-11-2019/static/js/main.823491c8.chunk.js.map",
-    "runtime-main.js": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js",
-    "runtime-main.js.map": "/Hagai_Harari_17-11-2019/static/js/runtime-main.92d3aaef.js.map",
-    "static/js/2.8681874e.chunk.js": "/Hagai_Harari_17-11-2019/static/js/2.8681874e.chunk.js",
-    "static/js/2.8681874e.chunk.js.map": "/Hagai_Harari_17-11-2019/static/js/2.8681874e.chunk.js.map",
-    "index.html": "/Hagai_Harari_17-11-2019/index.html",
-    "precache-manifest.cb464ea8d649bf611da66cb383069967.js": "/Hagai_Harari_17-11-2019/precache-manifest.cb464ea8d649bf611da66cb383069967.js",
-    "service-worker.js": "/Hagai_Harari_17-11-2019/service-worker.js",
-    "static/css/main.166a9d90.chunk.css.map": "/Hagai_Harari_17-11-2019/static/css/main.166a9d90.chunk.css.map",
-    "static/media/emptystar.png": "/Hagai_Harari_17-11-2019/static/media/emptystar.daf49cf1.png",
-    "static/media/flower.png": "/Hagai_Harari_17-11-2019/static/media/flower.fa9ff991.png",
-    "static/media/loading.svg": "/Hagai_Harari_17-11-2019/static/media/loading.e7aa2d00.svg",
-    "static/media/reload.png": "/Hagai_Harari_17-11-2019/static/media/reload.5286b241.png",
-    "static/media/settings.png": "/Hagai_Harari_17-11-2019/static/media/settings.d6422701.png",
-    "static/media/star.png": "/Hagai_Harari_17-11-2019/static/media/star.b52cd51a.png"
+    "main.css": "/For-Forecast/static/css/main.8b5117a8.chunk.css",
+    "main.js": "/For-Forecast/static/js/main.0e9192a1.chunk.js",
+    "main.js.map": "/For-Forecast/static/js/main.0e9192a1.chunk.js.map",
+    "runtime-main.js": "/For-Forecast/static/js/runtime-main.df7ecabe.js",
+    "runtime-main.js.map": "/For-Forecast/static/js/runtime-main.df7ecabe.js.map",
+    "static/js/2.8f530e70.chunk.js": "/For-Forecast/static/js/2.8f530e70.chunk.js",
+    "static/js/2.8f530e70.chunk.js.map": "/For-Forecast/static/js/2.8f530e70.chunk.js.map",
+    "index.html": "/For-Forecast/index.html",
+    "precache-manifest.49640e13e1f178e8770a4f5229161ba5.js": "/For-Forecast/precache-manifest.49640e13e1f178e8770a4f5229161ba5.js",
+    "service-worker.js": "/For-Forecast/service-worker.js",
+    "static/css/main.8b5117a8.chunk.css.map": "/For-Forecast/static/css/main.8b5117a8.chunk.css.map",
+    "static/js/2.8f530e70.chunk.js.LICENSE.txt": "/For-Forecast/static/js/2.8f530e70.chunk.js.LICENSE.txt",
+    "static/media/emptystar.png": "/For-Forecast/static/media/emptystar.daf49cf1.png",
+    "static/media/flower.png": "/For-Forecast/static/media/flower.fa9ff991.png",
+    "static/media/loading.svg": "/For-Forecast/static/media/loading.e7aa2d00.svg",
+    "static/media/reload.png": "/For-Forecast/static/media/reload.5286b241.png",
+    "static/media/settings.png": "/For-Forecast/static/media/settings.d6422701.png",
+    "static/media/star.png": "/For-Forecast/static/media/star.b52cd51a.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.92d3aaef.js",
-    "static/js/2.8681874e.chunk.js",
-    "static/css/main.166a9d90.chunk.css",
-    "static/js/main.823491c8.chunk.js"
+    "static/js/runtime-main.df7ecabe.js",
+    "static/js/2.8f530e70.chunk.js",
+    "static/css/main.8b5117a8.chunk.css",
+    "static/js/main.0e9192a1.chunk.js"
   ]
 }
