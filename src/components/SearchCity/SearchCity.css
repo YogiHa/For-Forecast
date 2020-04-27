@@ -1,15 +1,18 @@
 ul.options {
-  position: relative;
+  position: fixed;
+  z-index: 2;
   display: block;
   list-style: none;
-  width: 30rem;
+  width: 20rem;
   transition: width 0.3s;
   margin: auto;
+  align-items: center;
 }
 
 ul.options li {
   display: block;
   background: #ffffff;
+  opacity: 0.75;
   margin: 10px auto;
   padding: 10px;
   font-size: 1.2rem;
@@ -21,12 +24,15 @@ ul.options li:hover {
   color: #00b4cc;
   cursor: pointer;
   transition: 0.3s all;
+  opacity: 1;
+  background: #c3c0c0;
 }
 
 ul.options li.active-option {
   background: #c3c0c0;
   font-size: 1.5rem;
   color: #00b4cc;
+  opacity: 1;
 }
 .pointer {
   cursor: pointer;

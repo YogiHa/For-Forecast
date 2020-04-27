@@ -26,7 +26,7 @@ export default function ForcastDisplay() {
           <CurrentForecast currentForecast={currentForecast} />
           <br />
           <br />
-          <FutureForecast />
+          <FutureForecast style={{ width: '86%' }} />
         </Grid>
       )}
     </Box>

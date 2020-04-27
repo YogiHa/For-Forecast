@@ -1,15 +1,8 @@
-export const setMobileScreen = () => {
+export const setScreen = screen => {
   return (dispatch, getState) => {
     dispatch({
-      type: 'SCREEN_MOBILE'
-    });
-  };
-};
-
-export const setPCScreen = () => {
-  return (dispatch, getState) => {
-    dispatch({
-      type: 'SCREEN_PC'
+      type: 'SCREEN',
+      screen
     });
   };
 };

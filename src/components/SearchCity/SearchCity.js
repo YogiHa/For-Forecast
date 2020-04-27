@@ -6,8 +6,7 @@ import {
   clearAutoComplete
 } from '../../store/actions/apiActions';
 
-import Span from '../Span/Span';
-import { TextField, InputLabel, FormHelperText, Grid } from '@material-ui/core';
+import { TextField, InputLabel, FormHelperText } from '@material-ui/core';
 import './SearchCity.css';
 
 export default function SearchCity({ handleSubmit }) {

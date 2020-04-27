@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Moment from 'react-moment';
 import { Grid, Typography, Box } from '@material-ui/core';
-
+import ScrollY from '../../ScrollY';
 export default function FutureForecast() {
   const screen = useSelector(state => state.screen);
   const unit = useSelector(state => state.favorites.unit);
@@ -43,47 +43,51 @@ export default function FutureForecast() {
   };
 
   return (
-    <div>
-      {days.length > 0 && (
-        <Grid
-          item
-          style={{
-            marginLeft: `${screen === 'pc' ? '3%' : '1%'}`,
-            marginTop: '1%'
-          }}
-          xs={12}
-          container
-          direction="row"
-          spacing={3}
-          justify="space-between"
-        >
-          {days.map((day, i) => (
-            <Grid
-              key={i}
-              item
-              xs={screen === 'mobile' ? 1 : 2}
-              container
-              direction="row"
-              spacing={screen === 'mobile' ? 1 : 2}
-              justify="space-between"
-            >
-              <Box style={{ background: colors[i] }}>
-                <Grid item xs={6}>
-                  <Degree
-                    minTemp={day.temp.Minimum.Value}
-                    maxTemp={day.temp.Maximum.Value}
-                  />
-                </Grid>
-                <Grid item xs={4}>
-                  <Moment style={{ marginLeft: '10%' }} format="DD/MM/YYYY">
-                    {day.date}
-                  </Moment>
-                </Grid>
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
-      )}
+    <div style={{ width: '95%', alignSelf: 'center' }}>
+      <ScrollY>
+        {days.length > 0 && (
+          <Grid
+            item
+            style={{
+              marginLeft: `${screen === 'pc' ? '3%' : '1%'}`,
+              marginTop: '1%',
+              paddingBottom: '1%',
+              flex: 0.5
+            }}
+            xs={12}
+            container
+            direction="row"
+            spacing={3}
+            justify="space-between"
+          >
+            {days.map((day, i) => (
+              <Grid
+                key={i}
+                item
+                xs={screen === 'mobile' ? 1 : 2}
+                container
+                direction="row"
+                spacing={screen === 'mobile' ? 1 : 2}
+                justify="space-between"
+              >
+                <Box style={{ background: colors[i] }}>
+                  <Grid item xs={6}>
+                    <Degree
+                      minTemp={day.temp.Minimum.Value}
+                      maxTemp={day.temp.Maximum.Value}
+                    />
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Moment style={{ marginLeft: '10%' }} format="DD/MM/YYYY">
+                      {day.date}
+                    </Moment>
+                  </Grid>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        )}
+      </ScrollY>
     </div>
   );
 }

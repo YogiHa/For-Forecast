@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setMobileScreen, setPCScreen } from '../store/actions/screenActions';
+import { setScreen } from '../store/actions/screenActions';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import MainPage from './MainPage/MainPage';
@@ -23,8 +23,8 @@ export default function Router() {
   useEffect(() => {
     const handleResize = () => {
       window.innerWidth < 1075
-        ? dispatch(setMobileScreen())
-        : dispatch(setPCScreen());
+        ? dispatch(setScreen('mobile'))
+        : dispatch(setScreen('pc'));
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -36,7 +36,7 @@ export default function Router() {
   const uid = useSelector(state => state.firebase.auth.uid);
   const modal = useSelector(state => state.modal);
   return (
-    <HashRouter>
+    <HashRouter basename={process.env.PUBLIC_URL}>
       <Particles className="particles" param={particlesOptions} />
       <NavBar />
       <Switch>

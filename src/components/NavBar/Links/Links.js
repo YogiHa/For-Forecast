@@ -30,7 +30,7 @@ function Links(props) {
           <Link to={`/favorite`} style={{ textDecoration: 'none' }}>
             {' '}
             <CustomTag
-              onClick={() => setAnchorMenu(null)}
+              onClick={() => setAnchorMenu && setAnchorMenu(null)}
               id="fav_nav"
               style={{
                 color: `${CustomTag === Button ? 'white' : 'black'}`
@@ -41,7 +41,7 @@ function Links(props) {
             </CustomTag>{' '}
           </Link>
           <CustomTag
-            onClick={() => setAnchorMenu(null)}
+            onClick={() => setAnchorMenu && setAnchorMenu(null)}
             id="geo_nav"
             onClick={handleGeoCall}
             style={{
@@ -56,7 +56,7 @@ function Links(props) {
         <Link to={`/`} style={{ textDecoration: 'none' }}>
           {' '}
           <CustomTag
-            onClick={() => setAnchorMenu(null)}
+            onClick={() => setAnchorMenu && setAnchorMenu(null)}
             style={{
               color: `${CustomTag === Button ? 'white' : 'black'}`
             }}
